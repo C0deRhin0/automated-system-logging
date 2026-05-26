@@ -34,7 +34,7 @@ This bash script is only the counterpart of my PowerShell Forensic Suite. That p
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/C0deRhin0/Automated-System-Logging.git
+   git clone https://github.com/C0deRhin0/automated-system-logging.git
    ```
 
 2. Navigate to the project directory:
