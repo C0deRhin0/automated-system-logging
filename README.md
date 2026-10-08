@@ -1,6 +1,27 @@
 # Automated System Logging
 A simple Bash script for Linux forensic and security log analysis. Counterpart of the PowerShell Forensic Suite
 
+## Collection levels and evidence outputs
+
+The numeric level selects cumulative collection stages. Reports describe what the script could read from the current host; unavailable logs and permissions affect completeness.
+
+```mermaid
+flowchart LR
+H["Linux host and auth logs"]:::source --> F["Level 1<br/>forensic snapshot"]:::process
+    F --> A["Level 2<br/>successful-login analysis"]:::process
+    A --> R["Level 3<br/>security report"]:::process
+    F --> O[("Forensics text and HTML report")]:::store
+    A --> O
+    R --> O
+    classDef source fill:#e0f2fe,stroke:#0284c7,color:#0c4a6e
+    classDef process fill:#ede9fe,stroke:#7c3aed,color:#3b0764
+    classDef store fill:#dcfce7,stroke:#16a34a,color:#14532d
+    classDef review fill:#fef3c7,stroke:#d97706,color:#78350f
+    classDef result fill:#f1f5f9,stroke:#475569,color:#0f172a
+```
+
+Requires a Linux environment with Bash and `ss`, plus access to the relevant `/var/log` files. Outputs are written beneath the current working directory in `Forensics/` and `SecurityLogs/`. Treat collected user/process/network data as sensitive evidence; use a disposable lab host for screenshots.
+
 ## DESCRIPTION
 This script performs three security functions:
   1. Forensic Collection: Gathers system info, user list, processes, network connections, and event logs.
@@ -39,7 +60,7 @@ This bash script is only the counterpart of my PowerShell Forensic Suite. That p
 
 2. Navigate to the project directory:
    ```bash
-   cd Automated-System-Logging
+   cd automated-system-logging
    ```
    
 3. Make the script executable:
